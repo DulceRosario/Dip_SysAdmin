@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desarrollo de Sistemas Computacionales y Soluciones Tecnológicas</title>
+    <style>
+        :root {
+            --bg-main: #0a0f1d;
+            --bg-card: #131a30;
+            --bg-accent: #1b2644;
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --accent-blue: #38bdf8;
+            --accent-cyan: #06b6d4;
+            --accent-green: #10b981;
+            --border-color: #24335c;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-main) 100%);
+            border-bottom: 1px solid var(--border-color);
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+
+        .header-container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        header h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            background: linear-gradient(to right, var(--accent-blue), var(--accent-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        nav {
+            margin-top: 1.5rem;
+        }
+
+        nav a {
+            color: var(--text-primary);
+            text-decoration: none;
+            margin: 0 1rem;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--accent-blue);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .section-title {
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-left: 12px;
+            color: var(--text-primary);
+        }
+
+        .section-title::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 4px;
+            bottom: 4px;
+            width: 4px;
+            background-color: var(--accent-blue);
+            border-radius: 2px;
+        }
+
+        .intro-text {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            margin-bottom: 2.5rem;
+            max-width: 850px;
+        }
+
+        .services-container {
+            margin-bottom: 4rem;
+        }
+
+        .service-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+        }
+
+        .service-header {
+            margin-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.75rem;
+        }
+
+        .service-title {
+            font-size: 1.3rem;
+            color: var(--accent-blue);
+            font-weight: 600;
+        }
+
+        .service-tech-stack {
+            font-family: monospace;
+            font-size: 0.85rem;
+            color: var(--accent-green);
+            margin-top: 0.25rem;
+        }
+
+        .service-description {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-features {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .service-features li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--text-primary);
+        }
+
+        .service-features li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--accent-cyan);
+            font-weight: bold;
+        }
+
+        .methodology-block {
+            background-color: var(--bg-accent);
+            border-left: 4px solid var(--accent-cyan);
+            padding: 1.5rem;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 3rem;
+        }
+
+        .methodology-block h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.15rem;
+            color: var(--text-primary);
+        }
+
+        .methodology-list {
+            margin-left: 1.25rem;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .methodology-list li {
+            margin-bottom: 0.5rem;
+        }
+
+        .methodology-list strong {
+            color: var(--text-primary);
+        }
+
+        .contact-box {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 2.5rem;
+            text-align: center;
+        }
+
+        .contact-box h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-primary);
+        }
+
+        .contact-box p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn-contact {
+            display: inline-block;
+            background: linear-gradient(to right, var(--accent-blue), var(--accent-cyan));
+            color: #000;
+            font-weight: 700;
+            text-decoration: none;
+            padding: 0.75rem 2rem;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            transition: opacity 0.3s ease;
+        }
+
+        .btn-contact:hover {
+            opacity: 0.9;
+        }
+
+        footer {
+            background-color: #060912;
+            border-top: 1px solid var(--border-color);
+            padding: 2rem 1rem;
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-top: 5rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+            <h1>Soluciones Integrales en Sistemas Computacionales</h1>
+            <p>Diseño, arquitectura y desarrollo de software robusto, escalable y optimizado para entornos de alta exigencia.</p>
+            <nav>
+                <a href="#servicios">Servicios</a>
+                <a href="#metodologia">Metodología</a>
+                <a href="#contacto">Contacto</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <p class="intro-text">
+            Especialistas en transformar requerimientos operativos y científicos complejos en arquitecturas de software eficientes. Enfocados en el rendimiento, el procesamiento paralelo de datos y la robustez del sistema bajo entornos de producción continua.
+        </p>
+
+        <h2 id="servicios" class="section-title">Nuestros Servicios de Desarrollo</h2>
+        
+        <div class="services-container">
+            
+            <div class="service-card">
+                <div class="service-header">
+                    <div class="service-title">Desarrollo de Software a Medida y Sistemas Web</div>
+                    <div class="service-tech-stack">Stack principal: Python, Node.js, Go, Vue.js / React, PostgreSQL</div>
+                </div>
+                <p class="service-description">
+                    Construcción de aplicaciones web de extremo a extremo (Full-Stack) robustas y APIs estructuradas para la gestión e integración de sistemas complejos.
+                </p>
+                <ul class="service-features">
+                    <li>Arquitecturas desacopladas basadas en APIs RESTful y GraphQL.</li>
+                    <li>Paneles de control e interfaces de usuario reactivas, optimizadas para la visualización de datos masivos.</li>
+                    <li>Bases de datos relacionales y no relacionales diseñadas para alta disponibilidad y consistencia.</li>
+                </ul>
+            </div>
+
+            <div class="service-card">
+                <div class="service-header">
+                    <div class="service-title">Procesamiento de Datos de Alto Rendimiento y Computación Paralela</div>
+                    <div class="service-tech-stack">Stack principal: Python (Multiprocessing, OpenMP), C++, Linux Shell Scripting, Slurm</div>
+                </div>
+                <p class="service-description">
+                    Optimización y aceleración de algoritmos para el análisis de grandes volúmenes de información, análisis geoespacial o simulaciones numéricas.
+                </p>
+                <ul class="service-features">
+                    <li>Paralelización de scripts de análisis de datos para reducir drásticamente los tiempos de cómputo.</li>
+                    <li>Configuración y optimización de flujos de trabajo en clústeres de cómputo de alto rendimiento (HPC).</li>
+                    <li>Procesamiento por lotes y automatización de pipelines para ingesta y transformación de datos masivos.</li>
+                </ul>
+            </div>
+
+            <div class="service-card">
+                <div class="service-header">
+                    <div class="service-title">Infraestructura, Automatización y Linux Sysadmin</div>
+                    <div class="service-tech-stack">Stack principal: Linux, Systemd, Bash, Docker, Proxmox, Git</div>
+                </div>
+                <p class="service-description">
+                    Diseño de entornos de servidores estables, seguros y automatizados que garantizan la continuidad de sus aplicaciones.
+                </p>
+                <ul class="service-features">
+                    <li>Despliegue y virtualización de entornos mediante contenedores o hipervisores de código abierto.</li>
+                    <li>Automatización de respaldos, monitoreo de métricas críticas del sistema y administración de tareas cron.</li>
+                    <li>Optimización del entorno del sistema operativo Linux para cargas de trabajo críticas.</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <h2 id="metodologia" class="section-title">Metodología de Trabajo</h2>
+        <div class="methodology-block">
+            <h3>Garantía de Calidad e Ingeniería Rigurosa</h3>
+            <p style="color: var(--text-secondary); margin-bottom: 1rem; font-size: 0.95rem;">
+                Cada desarrollo sigue un ciclo de vida estricto enfocado en la estabilidad a largo plazo:
+            </p>
+            <ol class="methodology-list">
+                <li><strong>Análisis y Arquitectura:</strong> Levantamiento detallado de especificaciones técnicas y diseño estructural antes de escribir código.</li>
+                <li><strong>Desarrollo Modular:</strong> Código limpio, documentado, modular y bajo control de versiones estricto (Git).</li>
+                <li><strong>Pruebas y Optimización:</strong> Pruebas de carga, análisis de cuellos de botella en memoria/CPU y refinamiento de rendimiento.</li>
+                <li><strong>Despliegue y Soporte:</strong> Transición controlada a producción con documentación técnica completa.</li>
+            </ol>
+        </div>
+
+        <div id="contacto" class="contact-box">
+            <h3>¿Listo para materializar su proyecto tecnológico?</h3>
+            <p>Póngase en contacto para evaluar los requerimientos técnicos de su organización y diseñar una arquitectura computacional a la medida de sus necesidades.</p>
+            <a href="mailto:info@sistemascomputacionales.local" class="btn-contact">Iniciar Consulta Técnica</a>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Servicios de Ingeniería y Desarrollo de Sistemas Computacionales. Todos los derechos reservados.</p>
+    </footer>
+
+</body>
+</html>
