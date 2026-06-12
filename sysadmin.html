@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linux Sysadmin Portal | Documentación y Recursos</title>
+    <style>
+        :root {
+            --bg-color: #0f141c;
+            --panel-bg: #1e2530;
+            --text-color: #e1e7f0;
+            --accent-color: #38bdf8;
+            --accent-green: #4ade80;
+            --border-color: #334155;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--panel-bg);
+            border-bottom: 2px solid var(--accent-color);
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            font-size: 1.8rem;
+            font-family: 'Courier New', Courier, monospace;
+            color: var(--accent-color);
+        }
+
+        header h1 span {
+            color: var(--accent-green);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            gap: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        main {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        section {
+            background-color: var(--panel-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+
+        section h2 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+            color: var(--accent-color);
+        }
+
+        .command-box {
+            background-color: #090d13;
+            border-left: 4px solid var(--accent-green);
+            font-family: 'Courier New', Courier, monospace;
+            padding: 1rem;
+            border-radius: 4px;
+            margin: 1rem 0;
+            overflow-x: auto;
+            color: #f8fafc;
+        }
+
+        .command-box span.comment {
+            color: #64748b;
+        }
+
+        .command-box span.prompt {
+            color: var(--accent-green);
+            user-select: none;
+        }
+
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .card {
+            background-color: #151b23;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .card h3 {
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+        }
+
+        aside {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .widget {
+            background-color: var(--panel-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.2rem;
+        }
+
+        .widget h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+            color: var(--accent-green);
+        }
+
+        .status-list {
+            list-style: none;
+        }
+
+        .status-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.4rem 0;
+            border-bottom: 1px solid #273549;
+        }
+
+        .status-item:last-child {
+            border-bottom: none;
+        }
+
+        .badge {
+            background-color: #166534;
+            color: #4ade80;
+            padding: 0.1rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+            background-color: var(--panel-bg);
+            border-top: 1px solid var(--border-color);
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>root<span>@sysadmin-portal</span>:~#</h1>
+        <nav>
+            <ul>
+                <li><a href="#monitoreo">Monitoreo</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#automatizacion">Automatización</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        
+        <main>
+            <section id="monitoreo">
+                <h2>1. Monitoreo Esencial del Sistema</h2>
+                <p>Mantener visibilidad sobre los recursos del servidor es la primera línea de defensa de cualquier administrador de sistemas. Aquí se detallan los comandos clave para diagnosticar rendimiento:</p>
+                
+                <div class="command-box">
+                    <span class="comment"># Verificar el espacio en disco en formato humano</span><br>
+                    <span class="prompt">$</span> df -h<br><br>
+                    <span class="comment"># Monitorear procesos en tiempo real con uso de CPU y memoria</span><br>
+                    <span class="prompt">$</span> htop<br><br>
+                    <span class="comment"># Revisar el consumo de memoria RAM</span><br>
+                    <span class="prompt">$</span> free -m -th
+                </div>
+                <p>El uso correcto de herramientas como <code>htop</code> o <code>iotop</code> permite identificar cuellos de botella en entornos de producción antes de que afecten a los usuarios finales.</p>
+            </section>
+
+            <section id="servicios">
+                <h2>2. Gestión de Servicios con Systemd</h2>
+                <p>La mayoría de las distribuciones modernas de Linux (Debian, Ubuntu, RHEL, Rocky Linux) utilizan <strong>Systemd</strong> para la administración del ciclo de vida de los servicios del sistema.</p>
+                
+                <div class="grid-cards">
+                    <div class="card">
+                        <h3>Iniciar</h3>
+                        <p><code>systemctl start httpd</code></p>
+                    </div>
+                    <div class="card">
+                        <h3>Detener</h3>
+                        <p><code>systemctl stop httpd</code></p>
+                    </div>
+                    <div class="card">
+                        <h3>Estado</h3>
+                        <p><code>systemctl status httpd</code></p>
+                    </div>
+                    <div class="card">
+                        <h3>Habilitar</h3>
+                        <p><code>systemctl enable httpd</code></p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="automatizacion">
+                <h2>3. Automatización y Crontab</h2>
+                <p>La automatización de tareas repetitivas (como respaldos de bases de datos o limpieza de logs) se gestiona eficientemente mediante el demonio <code>cron</code>.</p>
+                
+                <div class="command-box">
+                    <span class="comment"># Editar las tareas cron del usuario actual</span><br>
+                    <span class="prompt">$</span> crontab -e<br><br>
+                    <span class="comment"># Formato básico: Min Hora DíaMes Mes DíaSemana Comando</span><br>
+                    0 2 * * * /usr/local/bin/backup_script.sh
+                </div>
+                <p>El ejemplo anterior ejecuta un script de respaldo de manera automática todos los días a las 02:00 AM.</p>
+            </section>
+        </main>
+
+        <aside>
+            <div class="widget">
+                <h3>[ Live Server Status ]</h3>
+                <ul class="status-list">
+                    <li class="status-item">
+                        <span>Hostname:</span>
+                        <strong>node-prod-01</strong>
+                    </li>
+                    <li class="status-item">
+                        <span>Uptime:</span>
+                        <span>142 days</span>
+                    </li>
+                    <li class="status-item">
+                        <span>Nginx Service:</span>
+                        <span class="badge">ONLINE</span>
+                    </li>
+                    <li class="status-item">
+                        <span>SSH (Port 22):</span>
+                        <span class="badge">SECURE</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="widget">
+                <h3>Recursos Útiles</h3>
+                <p style="font-size: 0.9rem; color: #94a3b8; margin-bottom: 0.5rem;">Enlaces recomendados para la administración de servidores:</p>
+                <ul style="padding-left: 1.2rem; font-size: 0.9rem;">
+                    <li><a href="https://man7.org/linux/man-pages/" target="_blank" style="color: var(--accent-color);">Linux Man Pages</a></li>
+                    <li><a href="#" style="color: var(--accent-color);">Glosario del Kernel</a></li>
+                </ul>
+            </div>
+        </aside>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Portal de Administración de Sistemas Linux. Desarrollado bajo estándares HTML5 semánticos.</p>
+    </footer>
+
+</body>
+</html>
